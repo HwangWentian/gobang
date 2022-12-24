@@ -51,7 +51,6 @@ def move(board: list, handle: bool) -> list:
         print("白方行")
     while (True):
         x, y = inputCoordinate()
-        print(x, y)
         if (board[y][x] == "+"):
             if (handle):
                 board[y] = board[y][:x - 1] + " @ " + board[y][x + 2:]
