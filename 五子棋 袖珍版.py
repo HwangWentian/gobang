@@ -117,4 +117,5 @@ if __name__ == "__main__":
         while (not gameOver(bd, black, x, y)):
             black = not black
             bd, x, y = move(bd, black)
+            sys("cls")
             displayChessboard(bd)
