@@ -1,3 +1,7 @@
+from os import system as sys
+from colorOutput import *
+
+
 def drawChessboard() -> list:
     board = []
     column = "     "
@@ -20,8 +24,18 @@ def drawChessboard() -> list:
 
 
 def displayChessboard(board: list):
-    for i in bd:
-        print(i)
+    clearScreen()
+    for row in board:
+        row_ = ""
+        for i in row:
+            if i == "@":
+                row_ += color("bold", "bgRed") + " " + color("default")
+            elif i == "#":
+                row_ += color("bold", "bgBlue") + " " + color("default")
+            else:
+                row_ += color("dim", "chWhite", "bgBlack") + \
+                     i + color("default")
+        print(row_)
 
 
 def inputCoordinate() -> tuple:
@@ -60,25 +74,25 @@ def move(board: list, handle: bool) -> tuple:
 
 def getRows(x: int, y: int, board: list) -> list:
     rows = []
-    if x >= 19:
+    if x >= 11:
         rows.append(board[y][x - 4] + board[y][x - 8] +
                     board[y][x - 12] + board[y][x - 16])
-    if x <= 43:
+    if x <= 35:
         rows.append(board[y][x + 4] + board[y][x + 8] +
                     board[y][x + 12] + board[y][x + 16])
-    if y >= 9:
+    if y >= 10:
         rows.append(board[y - 2][x] + board[y - 4][x] +
                     board[y - 6][x] + board[y - 8][x])
-    if y <= 21:
+    if y <= 22:
         rows.append(board[y + 2][x] + board[y + 4][x] +
                     board[y + 6][x] + board[y + 8][x])
-    if x >= 19 and y >= 9:
+    if x >= 11 and y >= 10:
         rows.append(board[y - 2][x - 4] + board[y - 4][x - 8] +
                     board[y - 6][x - 12] + board[y - 8][x - 16])
-    if x <= 43 and y >= 9:
+    if x <= 35 and y >= 10:
         rows.append(board[y - 2][x + 4] + board[y - 4][x + 8] +
                     board[y - 6][x + 8] + board[y - 8][x + 16])
-    if x >= 19 and y <= 21:
+    if x >= 11 and y <= 22:
         rows.append(board[y + 2][x - 4] + board[y + 4][x - 8] +
                     board[y + 6][x - 8] + board[y + 8][x - 16])
     if x <= 43 and y <= 21:
